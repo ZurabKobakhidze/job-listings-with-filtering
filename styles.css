@@ -10,10 +10,10 @@ body {
   padding-left: 24px;
   padding-right: 24px;
   box-sizing: border-box;
+  padding-top: 212px;
 }
 
 .container {
-  margin-top: 212px;
   width: 100%;
   padding-bottom: 24px;
   box-sizing: border-box;
@@ -32,6 +32,7 @@ body {
 .icon {
   position: absolute;
   top: -24px;
+  width: 48px;
 }
 
 .h2_text_box {
@@ -131,13 +132,13 @@ body {
   margin-top: 15px;
 }
 
-.skills_box{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    gap: 16px;
-    margin-top: 16px;
+.skills_box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .skill {
