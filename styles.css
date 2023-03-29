@@ -13,6 +13,12 @@ body {
   padding-top: 212px;
 }
 
+.jobSection{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .container {
   width: 100%;
   padding-bottom: 24px;
@@ -134,14 +140,15 @@ body {
 
 .skills_box {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  flex-basis: auto;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   width: 100%;
   gap: 16px;
   margin-top: 16px;
 }
 
-.skill {
+.skill-style {
   font-family: "League Spartan";
   font-style: normal;
   font-weight: 700;
@@ -157,19 +164,6 @@ body {
   padding-left: 8px;
   padding-right: 10px;
   box-sizing: border-box;
-  width: 100%;
 }
 
-.first_line {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
 
-.second_line {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-}
