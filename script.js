@@ -2,8 +2,6 @@ import data from "./data.json" assert { type: "json" };
 
 const list = document.querySelector(".jobSection");
 
-
-
 for (let index = 0; index < data.length ; index++ ){
     
     const { id, logo, company, new: isNew, featured, position, role, level, postedAt, contract, location, languages, tools} = data[index];
@@ -21,6 +19,29 @@ for (let index = 0; index < data.length ; index++ ){
     const companyName = document.createElement("span");
     companyName.classList.add("h2_icon");
     companyName.textContent = company;
+
+    const news = document.createElement("span");
+
+    if (isNew){
+        const newLabel = document.createElement("span");
+        newLabel.classList.add("h2_new");
+        newLabel.textContent = "New!";
+        news.append(newLabel);
+    }
+
+    const features = document.createElement("span");
+
+    if (featured){
+        const newFeatures = document.createElement("span");
+        newFeatures.classList.add("h2_features");
+        newFeatures.textContent = "featured";
+        features.append(newFeatures);
+        jobSectionBox.classList.add("container_featured");
+    }
+
+     else {
+      jobSectionBox.classList.add("container");
+    }
 
     const positionJob = document.createElement("h1");
     positionJob.classList.add("h1_headline");
@@ -61,20 +82,31 @@ for (let index = 0; index < data.length ; index++ ){
     skillLevel.classList.add("skill-style");
     skillLevel.textContent = level;
 
-    const skillLanguages = document.createElement("h2");
-    skillLanguages.classList.add("skill-style");
-    // skillLanguages.textContent = languages;
-    
+    const skillLanguages = document.createElement("div");
+    skillLanguages.classList.add("language_box");
 
+    languages.map(language => {
+        const languageElement = document.createElement("h2");
+        languageElement.classList.add("skill-style");
+        languageElement.textContent = language;
+        skillLanguages.append(languageElement);
+    });
     
+    const skillTools = document.createElement("h2");
+    skillTools.classList.add("language_box")
+
+    tools.map(tool =>{
+        const toolElement = document.createElement("h2");
+        toolElement.classList.add("skill-style");
+        toolElement.textContent = tool;
+        skillTools.append(toolElement);
+    });
+
     list.append(jobSectionBox);
     jobSectionBox.append(logolement, companyInfo,positionJob,informationBox,underLine,skillBox);
-    companyInfo.append(companyName);
+    companyInfo.append(companyName,news,features);
     informationBox.append(infoDate,betweenDot1,infoHours,betweenDot2,infolocation);
-    skillBox.append(skillRole, skillLevel,skillLanguages);
+    skillBox.append(skillRole, skillLevel,skillLanguages,skillTools);
     
-    
-    
-
 }
 
