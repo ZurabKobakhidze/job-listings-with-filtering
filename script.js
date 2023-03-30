@@ -2,6 +2,8 @@ import data from "./data.json" assert { type: "json" };
 
 const list = document.querySelector(".jobSection");
 const filterBox = document.querySelector(".filter_box");
+const clearButton = document.querySelector(".clear");
+
 
 function updateFilterBox() {
     filterBox.innerHTML = "";
@@ -11,12 +13,29 @@ function updateFilterBox() {
       filterItem.classList.add("filter_button");
       filterItem.textContent = item;
       filterBox.append(filterItem);
+      
+      const deleteIcon = document.createElement("img");
+      deleteIcon.classList.add("x_icon");
+      deleteIcon.src = "./icons export/Group 26.svg";
+      filterItem.append(deleteIcon);
+
+      deleteIcon.addEventListener("click", function(){
+        sequence = sequence.filter(val => val !== item);
+        updateFilterBox();
+      });
+      
     });
+
   }
- 
+
+  
+  
 let sequence = [];
 
-
+clearButton.addEventListener("click", () => {
+    sequence = [];
+    updateFilterBox();
+});
 
 for (let index = 0; index < data.length ; index++ ){
     
@@ -97,6 +116,7 @@ for (let index = 0; index < data.length ; index++ ){
         sequence.push(role);
         updateFilterBox();
 
+
     });
     
     const skillLevel = document.createElement("button");
@@ -145,5 +165,6 @@ for (let index = 0; index < data.length ; index++ ){
     informationBox.append(infoDate,betweenDot1,infoHours,betweenDot2,infolocation);
     skillBox.append(skillRole, skillLevel,skillLanguages,skillTools);
 
+    
 }
 
