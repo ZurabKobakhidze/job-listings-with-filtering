@@ -1,6 +1,22 @@
 import data from "./data.json" assert { type: "json" };
 
 const list = document.querySelector(".jobSection");
+const filterBox = document.querySelector(".filter_box");
+
+function updateFilterBox() {
+    filterBox.innerHTML = "";
+  
+    sequence.forEach(item => {
+      const filterItem = document.createElement("button");
+      filterItem.classList.add("filter_button");
+      filterItem.textContent = item;
+      filterBox.append(filterItem);
+    });
+  }
+ 
+let sequence = [];
+
+
 
 for (let index = 0; index < data.length ; index++ ){
     
@@ -74,32 +90,53 @@ for (let index = 0; index < data.length ; index++ ){
     const skillBox = document.createElement("div");
     skillBox.classList.add("skills_box");
 
-    const skillRole = document.createElement("h2");
+    const skillRole = document.createElement("button");
     skillRole.classList.add("skill-style");
     skillRole.textContent = role;
+    skillRole.addEventListener("click", () => {
+        sequence.push(role);
+        updateFilterBox();
 
-    const skillLevel = document.createElement("h2");
+    });
+    
+    const skillLevel = document.createElement("button");
     skillLevel.classList.add("skill-style");
     skillLevel.textContent = level;
+    skillLevel.addEventListener("click", () => {
+        sequence.push(level);
+        updateFilterBox();
 
+    });
+    
     const skillLanguages = document.createElement("div");
     skillLanguages.classList.add("language_box");
 
     languages.map(language => {
-        const languageElement = document.createElement("h2");
+        const languageElement = document.createElement("button");
         languageElement.classList.add("skill-style");
         languageElement.textContent = language;
         skillLanguages.append(languageElement);
+        languageElement.addEventListener("click", () => {
+            sequence.push(language);
+            updateFilterBox();
+        
+
+        });
     });
-    
-    const skillTools = document.createElement("h2");
+
+    const skillTools = document.createElement("div");
     skillTools.classList.add("language_box")
 
     tools.map(tool =>{
-        const toolElement = document.createElement("h2");
+        const toolElement = document.createElement("button");
         toolElement.classList.add("skill-style");
         toolElement.textContent = tool;
         skillTools.append(toolElement);
+        toolElement.addEventListener("click", () => {
+            sequence.push(tool);
+            updateFilterBox();
+
+        });    
     });
 
     list.append(jobSectionBox);
@@ -107,6 +144,6 @@ for (let index = 0; index < data.length ; index++ ){
     companyInfo.append(companyName,news,features);
     informationBox.append(infoDate,betweenDot1,infoHours,betweenDot2,infolocation);
     skillBox.append(skillRole, skillLevel,skillLanguages,skillTools);
-    
+
 }
 
