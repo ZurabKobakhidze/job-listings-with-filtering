@@ -4,6 +4,7 @@ const list = document.querySelector(".jobSection");
 const filterBox = document.querySelector(".filter_box");
 const clearButton = document.querySelector(".clear");
 
+let sequence = [];
 
 function updateFilterBox() {
     filterBox.innerHTML = "";
@@ -13,24 +14,21 @@ function updateFilterBox() {
       filterItem.classList.add("filter_button");
       filterItem.textContent = item;
       filterBox.append(filterItem);
-      
       const deleteIcon = document.createElement("img");
       deleteIcon.classList.add("x_icon");
       deleteIcon.src = "./icons export/Group 26.svg";
       filterItem.append(deleteIcon);
-
       deleteIcon.addEventListener("click", function(){
         sequence = sequence.filter(val => val !== item);
         updateFilterBox();
       });
-      
     });
 
   }
+  
 
-  
-  
-let sequence = [];
+
+
 
 clearButton.addEventListener("click", () => {
     sequence = [];
@@ -44,6 +42,7 @@ for (let index = 0; index < data.length ; index++ ){
     const jobSectionBox = document.createElement("div");
     jobSectionBox.classList.add("container");
 
+  
     const logolement = document.createElement("img");
     logolement.classList.add("icon");
     logolement.src = logo;
@@ -113,19 +112,20 @@ for (let index = 0; index < data.length ; index++ ){
     skillRole.classList.add("skill-style");
     skillRole.textContent = role;
     skillRole.addEventListener("click", () => {
-        sequence.push(role);
-        updateFilterBox();
-
-
+        if(!sequence.includes(role)){
+            sequence.push(role);
+            updateFilterBox();
+        };
     });
     
     const skillLevel = document.createElement("button");
     skillLevel.classList.add("skill-style");
     skillLevel.textContent = level;
     skillLevel.addEventListener("click", () => {
-        sequence.push(level);
-        updateFilterBox();
-
+        if(!sequence.includes(level)){
+            sequence.push(level);
+            updateFilterBox();
+        }       
     });
     
     const skillLanguages = document.createElement("div");
@@ -137,10 +137,10 @@ for (let index = 0; index < data.length ; index++ ){
         languageElement.textContent = language;
         skillLanguages.append(languageElement);
         languageElement.addEventListener("click", () => {
-            sequence.push(language);
-            updateFilterBox();
-        
-
+            if(!sequence.includes(language)){
+                sequence.push(language);
+                updateFilterBox();
+            }
         });
     });
 
@@ -153,9 +153,10 @@ for (let index = 0; index < data.length ; index++ ){
         toolElement.textContent = tool;
         skillTools.append(toolElement);
         toolElement.addEventListener("click", () => {
-            sequence.push(tool);
-            updateFilterBox();
-
+            if(!sequence.includes(tool)){
+                sequence.push(tool);
+                updateFilterBox();
+            }
         });    
     });
 
@@ -163,8 +164,15 @@ for (let index = 0; index < data.length ; index++ ){
     jobSectionBox.append(logolement, companyInfo,positionJob,informationBox,underLine,skillBox);
     companyInfo.append(companyName,news,features);
     informationBox.append(infoDate,betweenDot1,infoHours,betweenDot2,infolocation);
-    skillBox.append(skillRole, skillLevel,skillLanguages,skillTools);
-
-    
+    skillBox.append(skillRole, skillLevel,skillLanguages,skillTools);  
 }
 
+// function filterData(){
+//     const filterArray = data.filter((item) => {
+//         return item % 2 === 0;
+//     });
+//     return filterArray ;
+// }
+
+// const filterArray = filterData(); 
+// console.log(filterArray); 
