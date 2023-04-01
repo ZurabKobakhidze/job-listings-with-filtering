@@ -20,10 +20,9 @@ function updateFilterBox() {
       filterItem.append(deleteIcon);
       deleteIcon.addEventListener("click", function(){
         sequence = sequence.filter(val => val !== item);
-        updateFilterBox();
+        updateFilterBox(); 
       });
     });
-
   }
   
 
@@ -115,6 +114,8 @@ for (let index = 0; index < data.length ; index++ ){
         if(!sequence.includes(role)){
             sequence.push(role);
             updateFilterBox();
+            
+            
         };
     });
     
@@ -167,12 +168,78 @@ for (let index = 0; index < data.length ; index++ ){
     skillBox.append(skillRole, skillLevel,skillLanguages,skillTools);  
 }
 
-// function filterData(){
+// function filterData() {
 //     const filterArray = data.filter((item) => {
-//         return item % 2 === 0;
+//       const values = [item.role, item.level, ...item.languages, ...item.tools];
+//       return sequence.every((val) => values.includes(val));
 //     });
-//     return filterArray ;
-// }
+//     return filterArray;
+//   }
+  
+//   const filterArray = filterData(); 
+  
+//   filterBox.addEventListener("click", (e) => {
+//     if (e.target.classList.contains("filter_button")) {
+//       const filterText = e.target.textContent;
+//       if (sequence.includes(filterText)) {
+//         sequence = sequence.filter((val) => val !== filterText);
+//       } else {
+//         sequence.push(filterText);
+//       }
+//       updateFilterBox();
+//     }
+//   });
+  
+//   console.log(filterArray);
 
-// const filterArray = filterData(); 
-// console.log(filterArray); 
+
+
+
+
+
+
+
+
+
+
+
+
+// function filterJobs() {
+    
+//     const filteredJobs = data.filter(item => {
+      
+//       if (
+//         sequence.includes(item.role) ||
+//         sequence.includes(item.level) ||
+//         item.languages.some(lang => sequence.includes(lang)) ||
+//         item.tools.some(tool => sequence.includes(tool))
+//       ) {
+//         return true;
+//       }
+//       return false;
+//     });
+  
+    
+//     list.innerHTML = "";
+  
+    
+//     filteredJobs.forEach(item => {
+//         const filterItem = document.createElement("button");
+//       filterItem.classList.add("filter_button");
+//       filterItem.textContent = item;
+//       filterBox.append(filterItem);
+//       const deleteIcon = document.createElement("img");
+//       deleteIcon.classList.add("x_icon");
+//       deleteIcon.src = "./icons export/Group 26.svg";
+//       filterItem.append(deleteIcon);
+//       deleteIcon.addEventListener("click", function(){
+//         sequence = sequence.filter(val => val !== item);
+//         updateFilterBox(); 
+//       });
+//     });
+//   }
+
+  
+
+  
+
